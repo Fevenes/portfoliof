@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-panel: var(--panel);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-sun: var(--sun);
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-sans: "Figtree", system-ui, sans-serif;
+  --font-ethiopic: "Noto Sans Ethiopic", serif;
+}
+
+:root {
+  --paper: #f2f4f0;
+  --panel: #e6ebe4;
+  --ink: #14231f;
+  --muted: #4d5f58;
+  --line: #c9d3cb;
+  --accent: #0b6b5c;
+  --accent-ink: #ffffff;
+  --sun: #d99a00;
+}
+.dark {
+  --paper: #0c1613;
+  --panel: #14231e;
+  --ink: #e9efe9;
+  --muted: #9bb0a7;
+  --line: #243730;
+  --accent: #4fd1b5;
+  --accent-ink: #0c1613;
+  --sun: #f0b429;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s, color 0.3s;
+}
+:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 28s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+}
